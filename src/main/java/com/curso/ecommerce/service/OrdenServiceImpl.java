@@ -19,7 +19,7 @@ public class OrdenServiceImpl implements IOrdenService{
     }
 
     public String generarNumeroOrden(){
-        int numero=0;
+        int numero= 0 ;
         String numeroConcatenado="";
         List<Orden > ordenes =findAll();
         List<Integer> numeros = new ArrayList<Integer>();
