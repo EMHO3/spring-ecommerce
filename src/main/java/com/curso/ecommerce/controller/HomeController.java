@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/")
@@ -131,6 +132,7 @@ public class HomeController {
         return "administrador/usuario/resumenorden";
     }
 
+
     //para guardar la orden
     @GetMapping("/saveOrder")
     public String saveOrder(){
@@ -147,11 +149,20 @@ public class HomeController {
             dt.setOrden(orden);
             detalleOrdenService.save(dt);
         }
-
         ///limpiar lista y orden
         orden=new Orden();
         detalles.clear();
         return "redirect:/";
+    }
+
+
+    @PostMapping("/search")
+    public String searchProduct(@RequestParam String nombre,Model model){
+        log.info("Nombre del producto : {}", nombre);
+        List<Producto>productos=productoService.findAll().stream().filter(p -> p.getNombre().contains(nombre)).collect(Collectors.toList());
+        model.addAttribute("productos",productos);
+
+        return "administrador/usuario/home";
     }
 
 }
