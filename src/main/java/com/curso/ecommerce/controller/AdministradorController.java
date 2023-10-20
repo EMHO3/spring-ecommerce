@@ -23,4 +23,10 @@ public class AdministradorController {
         model.addAttribute("productos",productos);
         return "administrador/home";
     }
+
+
+    @GetMapping("usuarios")
+    public String usuarios(){
+          return "administrador/usuarios";
+    }
 }
