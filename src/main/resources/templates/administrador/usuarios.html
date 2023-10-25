@@ -45,10 +45,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td >Nombre</td>
-        <td >Email</td>
-        <td >Dirección</td>
+      <tr th:each="usuario:${usuarios}">
+        <td th:text="${usuario.nombre}"></td>
+        <td th:text="${usuario.email}"></td>
+        <td th:text="${usuario.direccion}"></td>
       </tr>       
     </tbody>
   </table>
